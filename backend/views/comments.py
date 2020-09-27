@@ -12,4 +12,4 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
-    permission_classes = IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticatedOrReadOnly]

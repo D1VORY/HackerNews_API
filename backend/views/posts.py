@@ -15,10 +15,10 @@ class PostViewSet(viewsets.ModelViewSet):
 
     serializer_class = PostSerializer
     queryset = Post.objects.all()
-    permission_classes = IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-@permission_classes(IsAuthenticated)
+@permission_classes([IsAuthenticated])
 @api_view(["POST"])
 def upvote_post(request, post_id):
     try:
