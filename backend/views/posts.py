@@ -4,11 +4,10 @@ from backend.serializers import PostSerializer
 from backend.models import Post
 
 
-class PostList(generics.ListAPIView):
-    serializer_class = PostSerializer
-    queryset = Post.objects.all()
+class PostViewSet(viewsets.ModelViewSet):
+    """
+    perform CRUD operations under posts
+    """
 
-
-class PostDetail(generics.RetrieveDestroyAPIView):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
