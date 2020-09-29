@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import environ
 
+
 env = environ.Env(DEBUG=(bool, True))
 
 environ.Env.read_env()
@@ -89,16 +90,27 @@ WSGI_APPLICATION = "dashboard.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env("DB_MAIN_NAME"),
-        "HOST": env("DB_MAIN_HOST"),
-        "PORT": env("DB_MAIN_PORT"),
-        "USER": env("DB_MAIN_USER"),
-        "PASSWORD": env("DB_MAIN_PASSWORD"),
+        "NAME": env("DB_DATABASE_NAME"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
+        "USER": env("DB_USERNAME"),
+        "PASSWORD": env("DB_PASSWORD"),
     }
 }
+
+"""
+Heroku db config
+Comment it when you dont need it
+"""
+import dj_database_url
+
+db_from_env = dj_database_url.config()
+DATABASES["default"].update(db_from_env)
+DATABASES["default"]["CONN_MAX_AGE"] = 500
 
 
 # Password validation
