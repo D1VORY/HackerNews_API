@@ -1,9 +1,7 @@
 from rest_framework import serializers
 from backend.models import Post
 from django.contrib.auth.models import User
-from rest_framework.serializers import raise_errors_on_nested_writes
 from django.contrib.auth.models import AnonymousUser
-import copy
 
 
 class PostSerializer(serializers.ModelSerializer):

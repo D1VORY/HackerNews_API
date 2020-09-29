@@ -1,4 +1,4 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 
 from backend.serializers import PostSerializer
 from backend.models import Post
